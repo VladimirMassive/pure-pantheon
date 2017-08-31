@@ -1,0 +1,44 @@
+#submit-article-title-div {
+    width:90%;
+    height:auto;
+    margin:0 auto;
+}
+
+#submit-article-description-div {
+    width:90%;
+    height:auto;
+    margin:50px auto;
+}
+
+#submit-article-image-div {
+    width:90%;
+    height:auto;
+    margin:50px auto;
+}
+
+#submit-article-content-div {
+    margin: 50px auto;
+    width:90%;
+    height: auto;
+}
+
+#submit-article-comment-div {
+    margin: 50px auto;
+    width:90%;
+    height: auto;
+}
+
+#submit-article-title {
+    height:100%;
+    width:100%;
+}
+
+#submit-article-content {
+    height:100%;
+    width:100%;
+}
+
+#submit-article-description {
+    height:100%;
+    width:100%;
+}

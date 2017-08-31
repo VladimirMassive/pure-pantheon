@@ -1,0 +1,154 @@
+html, body {
+    height:100%;
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -135px; /* the bottom margin is the negative value of the footer's height. */
+}
+
+.push {
+    height:125px;
+
+}
+
+.bottom-information-div {
+    color:white;
+    background-color:black;
+    width:100%;
+    height:150px;
+    margin-top:10px;
+    display:flex;
+}
+
+.logo-part-footer {
+    display:flex;
+    width:40%;
+}
+
+.footer-logo-div {
+    max-height:200px;
+    max-width: 200px;
+    width: auto;
+    height: auto;
+}
+
+.footer-logo {
+    max-height:200px;
+    max-width: 200px;
+    width: auto;
+    height: auto;
+    float:left;
+}
+
+.pure-slogan {
+    float:left;
+    font-family:"Copperplate Gothic Light", Gabriola, sans-serif;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.support-part-footer {
+    width:30%;
+    padding-left:75px;
+}
+
+.support-title {
+}
+
+.support-list {
+    list-style-type: none;
+    padding:0;
+}
+
+.support-list-links {
+    color:white;
+}
+
+.follow-part-footer {
+    width:30%;
+}
+
+.follow-title {
+    text-align:center;
+}
+
+.social-media-links {
+    height:65px;
+    width:auto;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+}
+
+/* Index Bottom Information */
+
+.index-bottom-information-div {
+    color:white;
+    background-color:red;
+    width:100%;
+    height:150px;
+    margin-top:10px;
+    display:flex;
+}
+
+.index-logo-part-footer {
+    display:flex;
+    width:40%;
+}
+
+.index-footer-logo-div {
+    max-height:200px;
+    max-width: 200px;
+    width: auto;
+    height: auto;
+}
+
+.index-footer-logo {
+    max-height:200px;
+    max-width: 200px;
+    width: auto;
+    height: auto;
+    float:left;
+}
+
+.index-pure-slogan {
+    float:left;
+    font-family:"Copperplate Gothic Light", Gabriola, sans-serif;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.index-support-part-footer {
+    width:30%;
+    padding-left:75px;
+}
+
+.index-support-list {
+    list-style-type: none;
+    padding:0;
+}
+
+.index-support-list-link {
+    color:black;
+}
+
+.index-follow-part-footer {
+    width:30%;
+}
+
+.index-follow-title {
+    text-align: center;
+}
+
+.index-social-media-links {
+    height:65px;
+    width:auto;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+}
+
+.index-links {}

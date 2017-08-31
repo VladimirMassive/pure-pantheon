@@ -1,0 +1,61 @@
+#user-outer {
+    width:100vw; /* makes it the full width of the viewport. 1 vw is 1/100th the width of the viewport */
+    min-height:100%; /* makes it the full height of the viewport. 1 vh is 1/100 the height of the viewport */
+    /*padding-top:30px;*/
+    height:auto !important;
+    height:100%;
+    overflow:auto;
+}
+
+#pic-name {
+    float:left;
+    margin-left:100px;
+    width:300px;
+    height:auto;
+}
+
+#profile-page-second {
+    float:left;
+    width:calc(100% - 600px);
+    height:auto;
+    padding-left:50px;
+}
+
+#comment-buttons {
+    float:right;
+}
+
+.comment-buttons {
+    border-bottom: 1px solid black;
+}
+
+#profile-pic {
+    width:300px;
+    height:300px;
+    border-radius:50%;
+}
+
+#username {
+    font-weight:bold;
+    font-style:italic;
+    text-align:left;
+    font-size:14px;
+}
+
+.threads-post {
+    font-style: italic;
+    float: right;
+}
+
+#upload-user-image {
+    margin:auto;
+    display: block;
+}
+
+#edit-description {
+    background:none;
+    border-top:none;
+    border-bottom:none;
+    color:blue;
+    font-style:italic;
+}

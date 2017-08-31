@@ -1,0 +1,149 @@
+html,body {
+    height:100%;
+    width:100%;
+    padding:0;
+    margin:0;
+}
+
+#atlas-outer {
+    width:100%;
+    height:100%;
+}
+
+.supplement-left, .supplement-right {
+    float:left;
+}
+
+.supplement-left {
+    width:45%;
+    height:100%;
+}
+
+.bottle-picture {
+    height:300px;
+    width:auto;
+    max-width:70%;
+    margin:20px auto;
+}
+
+.picture {
+    display:block;
+    height:100%;
+    width:auto;
+    margin:0 auto;
+}
+
+.supplement-description {
+    margin:20px auto;
+    height:auto;
+    width:95%;
+}
+
+.what-it-is {
+    text-align:center;
+    font-family:"Impact", Charcoal, sans-serif;
+    width:100%;
+    font-size:30px;
+    height:auto;
+}
+
+.what-it-does {
+    width:100%;
+    height:auto;
+    text-align:justify;
+    font-size:15px;
+    font-family:"Segoe UI Symbol", Gabriola, sans-serif;
+    font-weight:bold;
+}
+
+.supplement-right {
+    width:55%;
+    height:100%;
+}
+
+.supplement-info {
+    margin:20px auto;
+    width:95%;
+    height:45%;
+}
+
+.supp-info-pic-div {
+    float:left;
+    height:450px;
+    width:auto;
+    border:4px solid black;
+}
+
+.supp-info-pic {
+    height:100%;
+    width:auto;
+}
+
+.info {
+    margin-left:10px;
+    float:left;
+    width:auto;
+    max-width:60%;
+}
+
+#cart {
+
+}
+
+.info-head {
+    font-style:italic;
+    font-weight:bold;
+}
+
+.supplement-pictures-and-purchase {
+    margin:60px auto;
+    width:90%;
+    height:calc(55% - 80px);
+}
+
+.purchase-buttons {
+    width:100%;
+    height:auto;
+    display: flex;
+    align-items: center;
+}
+
+.buy-on-amazon {
+    height:100%;
+    font-size:30px;
+    padding:5px;
+    border-radius:8px;
+    border:3px solid black;
+    color:white;
+    background-color:limegreen;
+}
+
+.buy-on-amazon:hover {
+    text-decoration:none;
+    color:white;
+    opacity: .8;
+}
+
+.buy-on-site {
+    margin-top:20px;
+    height:100%;
+    font-size:30px;
+    color:gold;
+    background-color:black;
+    padding:5px;
+    border-radius:8px;
+    border:3px solid black;
+}
+
+.buy-on-site:hover {
+    text-decoration:none;
+    color:white;
+    opacity: .8;
+}
+
+.availability {
+    margin-top:50px;
+    font-size:30px;
+    font-family:"Segoe UI Symbol", Gabriola, sans-serif;
+    font-weight:bold;
+}

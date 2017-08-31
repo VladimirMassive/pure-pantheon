@@ -1,0 +1,22 @@
+.create-thread-body {
+    width:90%;
+    margin:0 auto;
+}
+
+.thread-title {
+    width:100%;
+}
+
+.thread-title-input {
+    width:100%;
+}
+
+.thread-content {
+    width:100%;
+    height:auto;
+}
+
+.thread-content-input {
+    height:100%;
+    width:100%;
+}

@@ -1,0 +1,199 @@
+.forum-body {
+    margin-top:-20px;
+    min-height:100%;
+    overflow:hidden;
+    background-color:#e7e7e7;
+}
+
+.forum-comments-body {
+    float:left;
+    min-height:100%;
+    padding-top:5px;
+    width:calc(100% - 390px);
+    margin-left:50px;
+    background-color:white;
+    border-left:1px solid black;
+    border-right:1px solid black;
+    border-bottom:1px solid black;
+    padding-bottom:5px;
+}
+
+.comment-avatar {
+    float: left;
+    position: relative;
+    padding-left:5px;
+    left: 5px;
+    height: 275px;
+    width:200px;
+    background-color:#cccccc;
+}
+
+.avatar-image {
+    margin-top:2px;
+    width: 100%;
+    height: auto;
+    max-height:60%;
+}
+
+.forum-username {
+    font-size: 16px;
+    font-weight:bold;
+}
+
+.avatar-description {
+    font-style:italic;
+}
+
+.post {
+    float: right;
+    min-height: 275px;
+    height:auto;
+    width: calc(100% - 205px);
+}
+
+.total{
+    margin-left:50px;
+    min-height:300px;
+    height: auto;
+    overflow:hidden;
+    width:90%;
+}
+
+.postNum {
+    float:right;
+}
+
+.forum-reply {
+    margin-top:-70px;
+    background-color:#e7e7e7;
+    border:1px solid black;
+    font-style:italic;
+}
+
+.numPageLinks {
+    display:inline-block;
+    border:1px solid blue;
+    width:20px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.currentPageLink {
+    display:inline-block;
+    border:1px solid blue;
+    width:20px;
+    text-align:center;
+    font-weight:bold;
+    background-color:#337ab7;
+    color:white;
+}
+
+#commentArea {
+    height: 100px;
+    width: 400px;
+}
+
+#blank {
+    font-style: italic;
+}
+
+.username-link {
+    font-style: italic;
+    color:white;
+}
+
+.forum-submit {
+    background:none;
+    border:none;
+}
+
+.forum-submit:hover {
+    opacity:.6;
+}
+
+.panel-body {
+    white-space:pre-wrap; /* This is how you make a new line appear when user presses enter */
+}
+
+.forum-ads {
+    margin-left:20px;
+    margin-top:20px;
+    width:300px;
+    height:1225px;
+    float:left;
+}
+
+.forum-ad-1 {
+    width:100%;
+    height:600px;
+    margin-bottom:25px;
+    border:1px solid blue;
+}
+
+.forum-ad-2 {
+    width:100%;
+    height:600px;
+    border:1px solid red;
+}
+
+/* Forum main-page */
+
+.get-threads-body {
+    margin-top:-20px;
+    min-height:100%;
+    display:block;
+    overflow:hidden;
+    background-color:#e7e7e7;
+}
+
+.click-threads {
+    float:left;
+    margin-left:50px;
+    width: calc(100% - 390px);
+}
+
+#forum-table {
+    border:1px solid black;
+    width:100%;
+    margin-bottom:10px;
+}
+
+#table-header {
+    color:white;
+    background-color:black;
+}
+
+#forum-threadName {
+    padding-left:2px;
+    width:75%;
+    border-bottom:1px solid black;
+    background-color:white;
+}
+
+#forum-numReplies {
+    background-color:#DCDCDC;
+    padding-left:10px;
+    border-left:1px solid black;
+    border-bottom:1px solid black;
+}
+
+.get-threads-ads {
+    float:left;
+    margin-left:20px;
+    margin-top:20px;
+    width:300px;
+    height:1225px;
+}
+
+.get-threads-ads-1 {
+    width:100%;
+    height:600px;
+    margin-bottom:25px;
+    border:1px solid blue;
+}
+
+.get-threads-ads-2 {
+    width:100%;
+    height:600px;
+    border:1px solid red;
+}

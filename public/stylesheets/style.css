@@ -1,0 +1,92 @@
+.pagination {
+  position:absolute;
+  bottom:10px;
+}
+
+.handleContainer {
+  width: 100%;
+  color:white;
+  background-color:black;
+  height:300px;
+}
+
+#indexHeader {
+  position:absolute;
+}
+
+#indexDescription {
+  position:relative;
+  top:60px;
+}
+
+.button-group {
+  width:200px;
+  margin:70px;
+  height:50px;
+}
+
+.front-display {
+  position:absolute;
+  top:400px;
+}
+
+.img-responsive {
+  max-height:150px;
+}
+
+.description {
+  font-size:12px;
+}
+
+.thumbnail {
+  height:330px;
+}
+
+#adFrontPageRight {
+  border:2px dashed black;
+  color: black;
+  left:150px;
+  height:400px;
+}
+
+#frontPagePopular {
+  position:absolute;
+  top:350px;
+  color:white;
+}
+
+#front-page-supplement-link {
+  position: relative;
+  left:10px;
+}
+
+.page-directory {
+  position: absolute;
+  left: 100px;
+  top: 135px;
+  width: 20%;
+  height: 590px;
+}
+
+.page-directory-button {
+  background-color: black;
+  color: #00FFFF;
+  width: 100%;
+  height: 118px;
+}
+
+.icon {
+  padding-top: 7%;
+}
+
+.page-directory-button-text {
+  padding-top: 0px;
+  font-family: Trajan;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.enh {
+  width: 100%;
+  height: auto;
+}

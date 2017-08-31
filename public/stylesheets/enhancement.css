@@ -1,0 +1,41 @@
+.enhancement-wrapper {
+    min-height:100%;
+    height:auto !important;
+    overflow:auto;
+    overflow-x:hidden;
+    margin-bottom:10px;
+}
+
+.enhance {
+    padding-left:10%;
+}
+
+.article-thumb {
+    width:100%;
+    height:auto
+}
+
+.article-thumbnail {
+    width: 300px;
+}
+
+#prev-next-buttons {
+    float:left;
+    position:relative;
+    left:50%;
+}
+
+#fixer-container {
+    float:left;
+    position:relative;
+    left:-50%;
+}
+
+.floated {
+    float: left;
+    margin-right: 5px;
+}
+
+#next-button {
+    text-align:center;
+}
