@@ -1,0 +1,126 @@
+<div class="supplement-body">
+    <div id="top-half-supplement">
+        {{#if successMsg}}
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+                    <div style="float:right;" id="success" class="alert alert-success" {{#if noMessages}}hidden{{/if}}>
+                        {{successMsg}}
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+
+        <div id="pure-pantheon-mission">
+            Bringing Back the Aesthetic Ideal of the Ancient Greeks and Romans. <br>
+            Earn yourself a place on the pantheon. The PURE PANTHEON
+        </div>
+
+        {{#if cartExists}}
+            {{#if addMessage}}
+                <div id="success" style="text-align:center">
+                    <strong><i>{{addMessage}}</i></strong>
+                </div>
+            {{/if}}
+            {{#if subMessage}}
+                <div id="success" style="text-align:center;">
+                    <strong><i>{{subMessage}}</i></strong>
+                </div>
+            {{/if}}
+            <div id="success" style="" class="supplement-right-top">
+                <strong>Your Cart:</strong>
+                {{#each products}}
+                    <div>
+                        {{this.title}} - {{this.description}} X <strong>{{lookup ../qty @index}}</strong>
+                        <form action="/quick-add-to-cart/{{id}}" method="POST" style="display:inline-block;">
+                            <button style="background:none; border:none;"><i class="fa fa-caret-up" aria-hidden="true"></i></button>
+                        </form>
+                        <form action="/quick-delete-from-cart/{{id}}" method="POST" style="display:inline-block;">
+                            <button style="background:none; border:none;"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                        </form>
+                    </div>
+                {{/each}}
+                <a href="/shopping-cart/checkout" type="button" class="btn btn-success">
+                    Checkout
+                </a>
+            </div>
+        {{else}}
+            <a href="/"><img class="supplement-right-top" src="/images/Logo.jpg"></a>
+        {{/if}}
+    </div>
+
+    <div id="bottom-half-supplement">
+        <div id="supplement-page-button-group">
+            <div id="supplement-buttons">
+                <a class="supplement-link" href="/">
+                    <div class="supplement-page-button" id="top-supplement-button">
+                        <i class="fa fa-home fa-1x icon" aria-hidden="true"></i>
+                        Home
+                    </div>
+                </a>
+                <a class="supplement-link" href="/enhancement/enhancement">
+                    <div class="supplement-page-button" id="middle-supplement-button">
+                        Articles
+                        <i class="fa fa-book fa-1x icon" aria-hidden="true"></i>
+                    </div>
+                </a>
+                <a class="supplement-link" href="/main/forum">
+                    <div class="supplement-page-button" id="bottom-supplement-button">
+                        <i class="fa fa-comments fa-1x icon" aria-hidden="true"></i>
+                        Forum
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div id="supplement-mid-div">
+            {{#if outMessage}}
+                <div style="border:2px solid black;" id="success" class="alert alert-danger">
+                    {{outMessage}}
+                </div>
+            {{/if}}
+            {{#if maxMessage}}
+                <div style="border:2px solid black;" id="success" class="alert alert-danger">
+                    {{maxMessage}}
+                </div>
+            {{/if}}
+            {{#if addMessage}}
+                <div style="border:2px solid black;" id="success" class="alert alert-success">
+                    {{addMessage}}
+                </div>
+            {{/if}}
+            {{#if subMessage}}
+                <div style="border:2px solid black;" id="success" class="alert alert-primary">
+                    {{subMessage}}
+                </div>
+            {{/if}}
+            {{#each products}}
+                <div class="thumbnail supplement-showcase">
+                    <a href="/supplements/atlas-strength-preworkout" id="thumbnail-click">
+                        <img src="/images/bottle-front.jpg" id="supplement-pic">
+                        <div class="caption supplement-page-caption">
+                            <div id="caption-product-desc">{{this.description}}</div>
+                            <div id="caption-product">{{this.title}}</div>
+                            <div id="caption-price" style="margin:5px; font-size:30px; font-weight:bold; text-align:center;">${{this.price}}</div>
+                        </div>
+                    </a>
+                </div>
+                <a type=button" class="btn btn-success supplement-add-to-cart" href="/add-to-cart/{{this._id}}">Add To Shopping Cart</a>
+                <div id="more-coming">
+                    <p id="more-coming-text">More Products Coming Soon!</p>
+                </div>
+            {{/each}}
+        </div>
+
+        <div id="supplement-ad-space">
+            <div id="supplement-ad-wrap">
+                <div id="supplement-top-ad">
+                    Ad Space
+                </div>
+                <div id="supplement-bottom-ad">
+                    Ad Space
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

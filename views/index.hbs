@@ -1,0 +1,92 @@
+ <div class="front-outer">
+     <div id="front-top-half">
+         <div id="banner-container">
+             <img src="/images/Fade-Tilted-Banner.jpg" id="front-page-banner"/>
+             <div id="front-ribbon-1">
+                 <div class="front-ribbon-image-container">
+                     <img src="/images/white-logo-red.jpg" id="front-ribbon-picture" />
+                 </div>
+             </div>
+         </div>
+
+         {{!
+         <div id="button-group">
+             <a href="/main/forum" id="top-button">Forum</a> <br>
+             <a href="/enhancement/enhancement" id="middle-button">Articles</a> <br>
+             <a href="/main/supplement" id="bottom-button">Supplements</a> <br>
+         </div>
+         <img id="front-logo" src="/images/Logo.jpg" />
+         --}}
+     </div>
+
+     <div id="front-bottom-half">
+
+         {{! Supplements >}}
+
+         <div id="supplements-div">
+             <div id="supplements-promo">
+                 <p class="promo-title">Popular Supplements</p>
+                 <a href="/main/supplement" class="see-more">See More</a>
+             </div>
+
+             <div class="thumbnail popular-supplement">
+                 <a href="/supplements/atlas-strength-preworkout">
+                     <img src="/images/bottle-front.jpg" class="thumbnail-img"/>
+                     <div class="caption">
+                         <h3 style="font-weight:bold;">Pre-Workout</h3>
+                         <h4>Pure Pantheon - Atlas Strength</h4>
+                         <p class="supplement-description">Modern day energy ambrosia to bring back back the aesthetic ideal of the Ancient Greeks and Romans!</p>
+                     </div>
+                 </a>
+             </div>
+         </div>
+
+         <div id="article-div">
+             <div id="articles-promo">
+                 <p class="promo-title">Newest Articles</p>
+                 <a href="/enhancement/enhancement" class="see-more">See More</a>
+             </div>
+             <div class="thumbnail popular-article-1">
+                 <form action="/get-article" method="post">
+                     <button style="border:none; background:none;">
+                         <img src="{{articleImages1}}" class="thumbnail-img"/>
+                         <div class="caption">
+                             <h3 style="text-align:left; font-weight:bold;">{{articleTitles1}}</h3>
+                             <p style="text-align:left;">{{articleDescriptions1}}</p>
+                             <p style="font-size:14px; font-style:italic; text-align:left;">{{articleAuthors1}}</p>
+                         </div>
+                         <textarea style="display:none;" name="articleID" cols="30" rows="10">{{articleID1}}</textarea>
+                     </button>
+                 </form>
+             </div>
+
+             <div class="thumbnail popular-article-2">
+                 <form action="/get-article" method="post">
+                     <button style="border:none; background:none;">
+                         <img src="{{articleImages2}}" class="thumbnail-img"/>
+                         <div class="caption">
+                             <h3 style="text-align:left; font-weight:bold;">{{articleTitles2}}</h3>
+                             <p style="text-align:left;">{{articleDescriptions2}}</p>
+                             <p style="font-size:14px; font-style:italic; text-align:left;">{{articleAuthors2}}</p>
+                         </div>
+                         <textarea style="display:none;" name="articleID" cols="30" rows="10">{{articleID2}}</textarea>
+                     </button>
+                 </form>
+             </div>
+
+             <div class="bottom-information-index">
+                 {{> index-bottom-information}}
+             </div>
+
+         </div>
+
+         <div id="ad-div">
+             <div id="big-ad">
+                 Ad
+             </div>
+         </div>
+
+     </div>
+ </div>
+
+

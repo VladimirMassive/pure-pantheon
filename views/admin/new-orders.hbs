@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        {{#if newOrders}}
+            <h3>Orders that need to be Filled: <strong>{{numOrders}}</strong></h3>
+            {{# each newOrders}}
+                <div class="panel panel-default">
+                    <div class="panel-heading"><i>{{this.name}}</i> - {{this.email}} - <i>{{this.datePlaced}}</i> --- <strong>{{this.address}}</strong></div>
+                    <div class=panel-body">
+                        <ul class="list-group">
+                            {{# each this.items}}
+                                <li class="list-group-item">
+                                    <span class="badge">{{this.price}}</span>
+                                    {{this.item.title}} | {{this.qty}} Units
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <strong>Total Order Price ${{this.cart.totalPrice}} <br > + $7.00 Shipping</strong>
+                        <form action="/admin/fulfill-order" method="POST" style="float:right;">
+                            <input type="checkbox" name="orderCheckBox" />
+                            <input type="hidden" name="orderID" value="{{this._id}}" />
+                            <button class="btn btn-success">Fulfill Order</button>
+                        </form>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <h3>No New Orders</h3>
+        {{/if}}
+    </div>
+</div>

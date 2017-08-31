@@ -1,0 +1,93 @@
+<div class="get-threads-body" style="padding:10px;">
+    <div class="click-threads">
+        <div class="types-of-threads">
+            <a style="float:left;" href="/main/forum"><h1>New {{title}}</h1></a>
+            <a style="margin-left:40px; float:left;" href="/main/forum/recent-reply"><h1>Recently Replied {{title}}</h1></a>
+        </div>
+
+        {{#if threads}}
+           <table id="forum-table">
+               <tr id="table-header">
+                   <th>Thread Name</th>
+                   <th>Replies</th>
+               </tr>
+               {{#if admin}}
+                   {{#each threads}}
+                       <tr>
+                           <td id="forum-threadName">
+                               <form action="/delete/thread" method="POST">
+                                   <input type="hidden" value="{{this._id}}" name="threadID">
+                                   <input type="checkbox" name="deleteThread"> Delete Thread
+                                   <button>Delete</button>
+                               </form>
+                               <a href="/forum/forum-read/{{this._id}}">{{this.threadName}}</a>
+                           </td>
+                           <td id="forum-numReplies">{{this.comments.length}}</td>
+                       </tr>
+                   {{/each}}
+               {{else}}
+                   {{#each threads}}
+                       <tr>
+                           <td id="forum-threadName">
+                               <a href="/forum/forum-read/{{this._id}}">{{this.threadName}}</a>
+                           </td>
+                           <td id="forum-numReplies">{{this.comments.length}}</td>
+                       </tr>
+                   {{/each}}
+               {{/if}}
+           </table>
+        {{else}}
+            {{#if recentThreads}}
+                <table id="forum-table">
+                    <tr id="table-header">
+                        <th>Thread Name</th>
+                        <th>Replies</th>
+                    </tr>
+                    {{#if admin}}
+                        {{#each recentThreads}}
+                            <tr>
+                                <td id="forum-threadName">
+                                    <form action="/delete/thread" method="POST">
+                                        <input type="hidden" value="{{this._id}}" name="threadID">
+                                        <input type="checkbox" name="deleteThread"> Delete Thread
+                                        <button>Delete</button>
+                                    </form>
+                                    <a href="/forum/forum-read/{{this.threadID}}">{{this.threadName}}</a>
+                                </td>
+                                <td id="forum-numReplies">{{this.comments}}</td>
+                            </tr>
+                        {{/each}}
+                    {{else}}
+                        {{#each recentThreads}}
+                            <tr>
+                                <td id="forum-threadName">
+                                    <a href="/forum/forum-read/{{this.threadID}}">{{this.threadName}}</a>
+                                </td>
+                                <td id="forum-numReplies">{{this.comments}}</td>
+                            </tr>
+                        {{/each}}
+                    {{/if}}
+                </table>
+            {{else}}
+                <p id="blank">There isn't anything here</p>
+            {{/if}}
+        {{/if}}
+
+        {{# if login }}
+            {{#if banned}}
+                <h4>You are banned: Cannot make new threads when banned from posting</h4>
+            {{else}}
+                <a type="button" href="/forum/create-thread">Create New Thread</a>
+            {{/if}}
+        {{/if}}
+    </div>
+
+    <div class="get-threads-ads">
+        <div class="get-threads-ads-1">
+            Ad 1
+        </div>
+        <div class="get-threads-ads-2">
+            Ad 2
+        </div>
+    </div>
+</div>

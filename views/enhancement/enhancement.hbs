@@ -1,0 +1,33 @@
+<div class="enhancement-wrapper">
+    <div class="row enhance">
+        {{#each articleTitles}}
+            <form action="/enhancement/click" method="post">
+                <div class="col-sm-6 col-md-4 article-thumbnail">
+                    <div class="thumbnail">
+                        <input type="image" src="{{lookup ../articleImages @index}}" alt="{{lookup ..articleImages @index}}" class="img-responsive img-click article-thumb">
+                        <div class="caption">
+                            <h3>{{this}}</h3>
+                            <p class="description">{{lookup ../articleDescriptions @index}}</p>
+                            <p style="font-size:14px; font-style:italic;">{{lookup ../authors @index}}</p>
+                        </div>
+                    </div>
+                </div>
+                <textarea style="display:none;" name="articleID" cols="30" rows="10">{{lookup ../articleIDs @index}}</textarea>
+            </form>
+        {{/each}}
+    </div>
+
+    {{#if pagination}}
+        <div id="prev-next-buttons">
+            <div id="fixer-container">
+                <form action="/enhancement/prev" method="post" class="floated" id="prev-button">
+                    <button type="submit">Previous</button>
+                </form>
+                <form action="/enhancement/next" method="post" id="next-button" class="floated">
+                    <button type="submit">Next</button>
+                </form>
+            </div>
+        </div>
+    {{else}}
+    {{/if}}
+</div>

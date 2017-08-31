@@ -1,0 +1,224 @@
+<div class="forum-body">
+    <div class="forum-comments-body">
+        <div class="forum-page-links" style="float:right; margin-right:10px;">
+            {{numPages}}
+            <form action="/jump-to-page" method="POST" style="display:inline-block;">
+                Jump to Page
+                <input type="text" name="jumpToPage" style="width:50px;">
+                <input type="hidden" name="threadID" value="{{id}}">
+                <button>Go</button>
+            </form>
+            {{#if prevPages}}
+                {{#each prevPages}}
+                    <a href="/forum/forum-read/{{lookup ../pageID @index}}/{{this}}"><div class="numPageLinks">{{this}}</div></a>
+                {{/each}}
+            {{/if}}
+            <a href="/forum/forum-read/{{id}}/{{currentPage}}"><div class="currentPageLink">{{currentPage}}</div></a>
+            {{#if nextPages}}
+                {{#each nextPages}}
+                    <a href="/forum/forum-read/{{lookup ../pageID @index}}/{{this}}"><div class="numPageLinks">{{this}}</div></a>
+                {{/each}}
+            {{/if}}
+        </div>
+        <h4 style="margin-left:55px; font-weight:bold;">Thread:<div style="color:#808080; font-weight:bold;">{{pageName}}</div></h4>
+        {{#if user.admin}}
+            <form action="/delete/thread" method="POST" style="margin-left:55px;">
+                <input type="hidden" name="threadID" value="{{id}}" />
+                <input type="checkbox" name="deleteThread">
+                <button>Delete Thread</button>
+            </form>
+        {{/if}}
+        {{# if login}}
+            {{#if comment}}
+                {{#if replyToMessage}}
+                    {{#each replyToMessage}}
+                        <div class="total" id="{{@index}}">
+                            <div class="comment-avatar">
+                                {{!<div class="forum-username"> {{lookup ../users @index </div> }}
+                                <img class="avatar-image" src="{{lookup ../ pics @index}}">
+                                <div class="avatar-description">
+                                    {{lookup ../descriptions @index}}
+                                </div>
+                            </div>
+                            <div class="panel panel-primary post" id="postBox">
+                                <div class="panel-heading">
+                                    <form action="/user/click-profile" method="POST">
+                                        <input type="hidden" name="username" value="{{lookup ../users @index}}" />
+                                        <button class="forum-submit" type="submit">{{lookup ../users @index}}</button>
+                                        <div class="postNum">#{{@index}}</div>
+                                    </form>
+                                </div>
+                                <div class="panel-body">
+                                    {{#if this}}
+                                        <div class="forum-reply" style="padding-left:10px;">
+                                            <p style="font-weight:bold; margin-top:-40px; margin-bottom:-30px;">Originally Posted By: {{this}}</p>
+                                            <p style="margin-bottom:-40px;">{{lookup ../replies @index}}</p>
+                                        </div>
+                                        <p style="margin-top:-30px; margin-bottom:-20px;">{{ lookup ../comment @index }}</p>
+                                    {{else}}
+                                        <p style="margin-top:-60px; margin-bottom:0px;">{{ lookup ../comment @index }}</p>
+                                    {{/if}}
+                                    <form action="/forum/reply-to-comment" method="POST" class="forum-reply-form" style="float:right; margin-bottom:-50px;">
+                                        <input type="hidden" name="commentContent" value="{{lookup ../comment @index}}">
+                                        <input type="hidden" name="commentUser" value="{{lookup ../users @index}}">
+                                        <input type="hidden" name="threadId" value="{{lookup ../loopID @index}}">
+                                        <input type="hidden" name="pageNum" value="{{lookup ../page @index}}">
+                                        <input type="hidden" name="postNum" value="{{postNum}}" />
+                                        <button>Reply</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                {{else}}
+                    {{#each comment}}
+                        <div class="total" id="{{@index}}">
+                            <div class="comment-avatar">
+                                {{!<div class="forum-username"> {{lookup ../users @index </div> }}
+                                <img class="avatar-image" src="{{lookup ../ pics @index}}">
+                                <div class="avatar-description">
+                                    {{lookup ../descriptions @index}}
+                                </div>
+                            </div>
+                            <div class="panel panel-primary post" id="postBox">
+                                <div class="panel-heading">
+                                    <form action="/user/click-profile" method="POST">
+                                        <input type="hidden" name="username" value="{{lookup ../users @index}}" />
+                                        <button class="forum-submit" type="submit">{{lookup ../users @index}}</button>
+                                        <div class="postNum">#{{@index}}</div>
+                                    </form>
+                                </div>
+                                <div class="panel-body">{{ this }}</div>
+                                <form action="/forum/reply-to-comment" method="POST" class="forum-reply-form" style="float:right;">
+                                    <input type="hidden" name="commentContent" value="{{this}}">
+                                    <input type="hidden" name="commentUser" value="{{lookup ../users @index}}">
+                                    <input type="hidden" name="threadId" value="{{lookup ../loopID @index}}">
+                                    <input type="hidden" name="pageNum" value="{{lookup ../page @index}}">
+                                    <input type="hidden" name="postNum" value="{{postNum}}" />
+                                    <button>Reply</button>
+                                </form>
+                            </div>
+                        </div>
+                    {{/each}}
+                {{/if}}
+            {{/if}}
+
+
+            {{#if goingToReply}}
+                <i>You must write something to comment</i>
+                <div style="margin-left:10px;">Replying to: {{replyTo}} comment - <div style="font-style:italic;">{{commentReplyTo}}</div></div>
+                   <form action="/forum/forum-read/submit" method="POST" style="margin-left:10px;">
+                       <input type="hidden" name="userReplyTo" value="{{replyTo}}" />
+                       <input type="hidden" name="commentReplyTo" value="{{commentReplyTo}}">
+                       <input type="hidden" name="threadName" value="{{pageName}}" />
+                       <input type="hidden" name="threadid" value="{{id}}" />
+                       <input type="hidden" name="postNum" value="{{postNum}}" />
+                       <input type="hidden" name="pageNum" value="{{pageNum}}" />
+                       <textarea id="commentArea" name="commentArea" cols="30" rows="10"></textarea> <br />
+                       <button class="submitButton" id="submit">Post comment</button>
+                   </form>
+            {{else}}
+                <i>You must write something to comment</i>
+                <form action="/forum/forum-read/submit" method="POST" style="margin-left:10px;">
+                       <input type="hidden" name="userReplyTo" value="" />
+                       <input type="hidden" name="commentReplyTo" value="">
+                       <input type="hidden" name="threadName" value="{{pageName}}" />
+                       <input type="hidden" name="threadid" value="{{id}}" />
+                       <input type="hidden" name="postNum" value="{{postNum}}" />
+                       <input type="hidden" name="pageNum" value="{{pageNum}}" />
+                       <textarea id="commentArea" name="commentArea" cols="30" rows="10"></textarea> <br />
+                       <button class="submitButton" id="submit">Post comment</button>
+                   </form>
+            {{/if}}
+
+
+        {{else}}
+            {{#if comment}}
+                {{#if replyToMessage}}
+                    {{#each replyToMessage}}
+                        <div class="total" id="{{@index}}">
+                            <div class="comment-avatar">
+                                {{!<div class="forum-username"> {{lookup ../users @index </div> }}
+                                <img class="avatar-image" src="{{lookup ../ pics @index}}">
+                                <div class="avatar-description">
+                                    {{lookup ../descriptions @index}}
+                                </div>
+                            </div>
+                            <div class="panel panel-primary post" id="postBox ">
+                                <div class="panel-heading">
+                                    <form action="/user/click-profile" method="POST">
+                                        <input type="hidden" name="username" value="{{lookup ../users @index}}" />
+                                        <button class="forum-submit" type="submit">{{lookup ../users @index}}</button>
+                                        <div class="postNum">#{{@index}}</div>
+                                    </form>
+                                </div>
+                                <div class="panel-body">
+                                    {{#if this}}
+                                        <div class="forum-reply" style="padding-left:10px;">
+                                            <p style="font-weight:bold; margin-top:-40px; margin-bottom:-30px;">Originally Posted By: {{this}}</p>
+                                            <p style="margin-bottom:-40px;">{{lookup ../replies @index}}</p>
+                                        </div>
+                                        <p style="margin-top:-30px; margin-bottom:-20px;">{{ lookup ../comment @index }}</p>
+                                    {{else}}
+                                        <p style="margin-top:-50px; margin-bottom:0px;">{{ lookup ../comment @index }}</p>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                {{else}}
+                    {{#each comment}}
+                        <div class="total" id="{{@index}}">
+                            <div class="comment-avatar">
+                                {{!<div class="forum-username"> {{lookup ../users @index </div> }}
+                                <img class="avatar-image" src="{{lookup ../ pics @index}}">
+                                <div class="avatar-description">
+                                    {{lookup ../descriptions @index}}
+                                </div>
+                            </div>
+                            <div class="panel panel-primary post" id="postBox">
+                                <div class="panel-heading">
+                                    <form action="/user/click-profile" method="POST">
+                                        <input type="hidden" name="username" value="{{lookup ../users @index}}" />
+                                        <button class="forum-submit" type="submit">{{lookup ../users @index}}</button>
+                                        <div class="postNum">#{{@index}}</div>
+                                    </form>
+                                </div>
+                                <div class="panel-body">{{ this }}</div>
+                            </div>
+                        </div>
+                    {{/each}}
+                {{/if}}
+            {{/if}}
+        {{/if}}
+        <div class="forum-page-links" style="float:right; margin-right:10px;" id="bottom">
+                <form action="/jump-to-page" method="POST" style="display:inline-block;">
+                    Jump to Page
+                    <input type="text" name="jumpToPage" style="width:50px;">
+                    <input type="hidden" name="threadID" value="{{id}}">
+                    <button>Go</button>
+                </form>
+                {{#if prevPages}}
+                    {{#each prevPages}}
+                        <a href="/forum/forum-read/{{lookup ../pageID @index}}/{{this}}"><div class="numPageLinks">{{this}}</div></a>
+                    {{/each}}
+                {{/if}}
+                <a href="/forum/forum-read/{{id}}/{{currentPage}}"><div class="currentPageLink">{{currentPage}}</div></a>
+                {{#if nextPages}}
+                    {{#each nextPages}}
+                        <a href="/forum/forum-read/{{lookup ../pageID @index}}/{{this}}"><div class="numPageLinks">{{this}}</div></a>
+                    {{/each}}
+                {{/if}}
+        </div>
+    </div>
+
+    <div class="forum-ads">
+        <div class="forum-ad-1">
+            Ad 1
+        </div>
+        <div class="forum-ad-2">
+            Ad 2
+        </div>
+    </div>
+
+</div>

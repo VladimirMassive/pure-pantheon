@@ -1,0 +1,168 @@
+{{!--
+{{# each users}}
+    {{# each this}}
+        <h1>{{this.email}}</h1>
+    {{/each}}
+{{/each}}
+--}}
+
+<h3>{{message}}</h3>
+
+<div id="user-outer">
+    <div id="pic-name">
+        {{# if belongs}}
+            <form action="/user/upload-profile-pic" method="POST" enctype="multipart/form-data">
+                <input type="file" name="profileImage" />
+                <button id="upload-user-image">Upload Image</button>
+            </form>
+        {{else}}
+        {{/if}}
+        <img src="{{profilePic}}" id="profile-pic">
+        <h3 id="username">
+            {{# if username}}
+                {{username}}
+            {{else}}
+                Username
+            {{/if}}
+        </h3>
+        {{# if description}}
+            <p style="font-style:italic;">
+                {{description}}
+            </p>
+        {{else}}
+            <p style="font-style:italic;">
+                This user has given no description
+            </p>
+        {{/if}}
+
+        {{#if belongs}}
+            {{#if user.enable}}
+                <form action="/user/edit-description" method="POST">
+                    <textarea id="descriptionArea" name="description" cols="30" rows="10"></textarea> <br />
+                    <button class="submitButton" id="submit">Add Description</button>
+                </form>
+            {{else}}
+                <form action="/user/enable-editing" method="POST">
+                    <button id="edit-description">Edit Description</button>
+                </form>
+            {{/if}}
+        {{else}}
+        {{/if}}
+
+        {{#if allowedToUpload}}
+            <form action="/user/submit-article" method="POST">
+                <button>Create Article</button>
+            </form>
+        {{else}}
+        {{/if}}
+
+        {{#if admin}}
+                {{#if take}}
+                    <form action="/user/takePermission" method="POST">
+                        <input type="checkbox" name="takePermission"> Takeaway this user's ability to upload articles
+                        <textarea style="display:none;" name="getUsername" cols="30" rows="10">{{username}}</textarea>
+                        <button>Submit</button>
+                    </form>
+                {{else}}
+                    <form action="/user/givePermission" method="POST">
+                        <input type="checkbox" name="givePermission"> Allow this user to upload articles
+                        <textarea style="display:none;" name="getUsername" cols="30" rows="10">{{username}}</textarea>
+                        <button>Submit</button>
+                    </form>
+                {{/if}}
+
+                {{#if banned}}
+                    <form action="/user/unbanUser" method="POST" style="margin-top:20px;">
+                        <input type="checkbox" name="unbanUser"> Unban user - Give them ability to comment again
+                        <textarea style="display:none;" name="getUsername" cols="30" rows="10">{{username}}</textarea>
+                        <button>Submit</button>
+                    </form>
+                {{else}}
+                    <form action="/user/banUser" method="POST" style="margin-top:20px;">
+                        <input type="checkbox" name="banUser"> Ban this user from commenting
+                        <textarea style="display:none;" name="getUsername" cols="30" rows="10">{{username}}</textarea>
+                        <button>Submit</button>
+                    </form>
+                {{/if}}
+        {{/if}}
+    </div>
+
+    <div id="profile-page-second">
+        <div id="comment-buttons">
+            <a class="comment-buttons" style="margin-right:15px;" href="/user/profile/{{username}}">Forum Comments</a>
+            <a class="comment-buttons" style="margin-right:15px;" href="/user/profile/article-comments/{{username}}">Article Comments</a>
+            {{#if writeArticle}}
+                <a class="comment-buttons" style="margin-right:15px;" href="/user/profile/articles-written/{{username}}">Articles Written</a>
+            {{/if}}
+            {{#if newOrders}}
+                <a class="comment-buttons" style="margin-right:15px;" href="/admin/new-orders">New Orders</a>
+            {{/if}}
+            {{#if user.admin}}
+                <a class="comment-buttons" style="margin-right:15px;" href="/admin/set-quantity">Set Quantity</a>
+                <a class="comment-buttons" style="margin-right:15px;" href="/admin/mailing-list">Mailing List</a>
+                <a class="comment-buttons" style="margin-right:15px;" href="/admin/coupon-codes">Coupon Codes</a>
+            {{/if}}
+        </div>
+
+        {{#if forum}}
+            <h2 id="user-comments-title">Forum Comments</h2>
+        {{else}}
+            {{#if aComments}}
+                <h2 id="user-comments-title">Article Comments</h2>
+            {{else}}
+                <h2 id="user-comments-title">Articles Written</h2>
+            {{/if}}
+        {{/if}}
+
+        <div id="user-comments">
+            {{# if comments}}
+                <ul class="comment">
+                     {{# if forum}}
+                         {{#if showMoreComments}}
+                             {{#each firstComments}}
+                                 <li><a href="/forum/forum-read/{{lookup ../ids @index}}/{{lookup ../pageNum @index}}/#{{lookup ../postNum @index}}" class="user-comments">{{this}}</a> in <div class="threads-post">{{lookup ../threads @index}}</div></li>
+                             {{/each}}
+                             <a class="btn btn-primary" href="/user/profile/{{username}}/show-all-comments">Show All Comments</a>
+                         {{else}}
+                             {{# each comments}}
+                                 <li><a href="/forum/forum-read/{{lookup ../ids @index}}/{{lookup ../pageNum @index}}/#{{lookup ../postNum @index}}" class="user-comments">{{this}}</a> in <div class="threads-post">{{lookup ../threads @index}}</div></li>
+                             {{/each}}
+                             {{#if showLess}}
+                                 <a class="btn btn-primary" href="/user/profile/{{username}}">Show Less Comments</a>
+                             {{/if}}
+                         {{/if}}
+                     {{else}}
+                         {{#if showMoreComments}}
+                             {{# each firstComments}}
+                                 <li><a href="/enhancement/{{lookup ../ids @index}}" class="user-comments">{{this}}</a> in <div class="threads-post">{{lookup ../threads @index}}</div></li>
+                             {{/each}}
+                             <a class="btn btn-primary" href="/user/profile/article-comments/{{username}}/show-all-comments">Show All Comments</a>
+                         {{else}}
+                             {{# each comments}}
+                                 <li><a href="/enhancement/{{lookup ../ids @index}}" class="user-comments">{{this}}</a> in <div class="threads-post">{{lookup ../threads @index}}</div></li>
+                             {{/each}}
+                             {{#if showLess}}
+                                 <a class="btn btn-primary" href="/user/profile/article-comments/{{username}}">Show Less Comments</a>
+                             {{/if}}
+                         {{/if}}
+                     {{/if}}
+                </ul>
+            {{else}}
+                {{# if aWrite}}
+                    {{#if articles}}
+                        <ul id="article-list">
+                            {{#each articles}}
+                                <li><a href="/enhancement/{{lookup ../ids @index}}" class="user-comments">{{this}}</a></li>
+                            {{/each}}
+                        </ul>
+                    {{else}}
+                        <h4 style="font-style:italic;">No Articles</h4>
+                    {{/if}}
+                {{else}}
+                    <h4 style="font-style:italic;">No Comments</h4>
+                {{/if}}
+            {{/if}}
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,18 @@
+<form action="/admin/add-coupon-code" method="POST">
+    <input type="text" name="addCode" />
+    <button class="btn btn-success">Add Coupon Code</button>
+</form>
+<form action="/admin/delete-coupon-code" method="POST">
+    <input type="text" name="deleteCode" />
+    <button class="btn btn-danger">Delete Coupon Code</button>
+</form>
+
+{{#if codes}}
+    <ul>
+        {{#each codes}}
+            <li>{{this.code}}</li>
+        {{/each}}
+    </ul>
+{{else}}
+    There are no coupon codes at this time
+{{/if}}

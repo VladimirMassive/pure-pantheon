@@ -1,0 +1,28 @@
+<div id="vlad-stories-outer" style="width:100%; position:relative;">
+    <div id="vlad-story-links">
+        <p id="vlad-story-links-title">Vladimir Massive Stories</p>
+            {{#each stories}}
+                {{#each this}}
+                    <form action="/vlad/click" method="post">
+                        <button class="asText" href="/vlad/stories-display">{{this.title}}</button> <br />
+                        <textarea style="display:none;" name="idBrah" cols="30" rows="10">{{this._id}}</textarea>
+                    </form>
+                {{/each}}
+            {{/each}}
+        <a href="#" class="vlad-text-button" id="stories-seemore">see more</a>
+    </div>
+
+    <div id="vlad-comic-links">
+        <div id="vlad-comic-links-title">Vladimir Massive Comics</div>
+            {{#each comics}}
+                {{#each this}}
+                    <form action="/vlad/click-comic" method="post">
+                        <button class="asText" href="/vlad/comic-display">{{this.title}}</button> <br />
+                        <textarea style="display:none;" name="comicid" cols="30" rows="10">{{this._id}}</textarea>
+                        <textarea style="display:none;" name="comicImagePath" cols="30" rows="10">{{this.contentPath}}</textarea>
+                    </form>
+                {{/each}}
+            {{/each}}
+        <a href="#" class="vlad-text-button" id="comics-seemore">see more</a>
+    </div>
+</div>

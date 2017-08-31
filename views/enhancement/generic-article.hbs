@@ -1,0 +1,299 @@
+<div id="article-body-div">
+
+    <div class="ad-div-728-90">
+        Ad
+    </div>
+
+    <div id="left-side-article">
+        <img src="{{image}}" class="author-pic" />
+        <a href="/user/profile/articles-written/{{author}}" style="color:black; font-style:italic;">
+            <h3 id="author" style="text-align:center;">{{author}}</h3>
+        </a>
+    </div>
+
+    <div id="content-part-article">
+        <div class="generic-article-title">
+            {{# if title}}
+                <p style="font-size:30px; font-weight:bold;">{{title}}</p>
+                {{#if user.admin}}
+                    <form action="/enhancement/delete-article" method="POST">
+                        <input type="hidden" name="articleID" value="{{article._id}}" />
+                        <input type="checkbox" name="deleteArticle" />
+                        <button>Delete Article</button>
+                    </form>
+                    <form action="/enhancement/delete-comments" method="POST">
+                        <input type="hidden" name="articleID" value="{{article._id}}" />
+                        <input type="checkbox" name="deleteComments" />
+                        <button>Delete Comments</button>
+                    </form>
+                    {{#if article.allowComments}}
+                        <form action="/enhancement/disallow-comments" method="POST">
+                            <input type="hidden" name="articleID" value="{{article._id}}" />
+                            <input type="checkbox" name="disallowComments" />
+                            <button>Disallow Comments</button>
+                        </form>
+                    {{else}}
+                        <form action="/enhancement/allow-comments" method="POST">
+                            <input type="hidden" name="articleID" value="{{article._id}}" />
+                            <input type="checkbox" name="allowComments" />
+                            <button>Allow Comments</button>
+                        </form>
+                    {{/if}}
+                {{/if}}
+            {{else}}
+                Generic Title
+            {{/if}}
+        </div>
+        <div class="social-media-share-links" style="width:100%; border-bottom:3px solid black;">
+            <strong style="font-size:20px; color:#808080"><i>SHARE:</i></strong>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank">
+                <i class="fa fa-facebook-square fa-4x" style="color:#3b5998" aria-hidden="true"></i>
+            </a>
+            <a href="https://twitter.com/share?hashtags=awesome,sharing&text=My Page Title or Something Else to share&via=MyTwitterHandle">
+                <i class="fa fa-twitter-square fa-4x" style="color:#0084b4" aria-hidden="true"></i>
+            </a>
+            <a href="https://plus.google.com/share?url=localhost:3000/enhancement/{{id}}">
+                <i class="fa fa-google-plus-square fa-4x" style="color:#d34836" aria-hidden="true"></i>
+            </a>
+            <a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this article http://localhost:3000/enhancement/{{id}}" title="Share by Email">
+                <i class="fa fa-envelope fa-4x" style="color:#cb2027" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class="article-image-div">
+            <img src="{{articleImage}}" id="article-image" />
+        </div>
+        <div class="article-content">
+            <p>{{content}}</p>
+        </div>
+    </div>
+
+    <div id="ad-part-article">
+        <div id="ad-1">Ad 1</div>
+        <div id="ad-2">Ad 2</div>
+    </div>
+
+
+    {{#if banned}}
+        {{#if comments}}
+            {{#if replyToMessage}}
+                <div id="article-comment-space">
+                    {{#each replyToMessage}}
+                        {{#if this}}
+                            <div class="panel panel-primary" id="actual-article-comment">
+                                <div class="panel-heading">
+                                    <form action="/user/click-profile-article" method="POST">
+                                        <input type="hidden" name="username" value="{{lookup ../users @index}}" />
+                                        <button class="forum-submit" type="submit">{{lookup ../users @index}}</button> <div class="postNum">#{{@index}}</div>
+                                    </form>
+                                </div>
+                                <div class="panel-body comment-body">
+                                    <div class="reply" style="padding-left:10px;">
+                                        <p style="font-weight:bold; margin-top:-40px; margin-bottom:-30px;">Originally Posted By: {{this}}</p>
+                                        <p style="margin-bottom:-40px;">{{lookup ../replies @index}}</p>
+                                    </div>
+                                    <p style="margin-bottom:-50px;">{{lookup ../comments @index}}</p>
+                                </div>
+                            </div>
+                        {{else}}
+                            <div class="panel panel-primary" id="actual-article-comment">
+                                <div class="panel-heading">
+                                    <form action="/user/click-profile-article" method="POST">
+                                        <input type="hidden" name="username" value="{{lookup ../users @index}}" />
+                                        <button class="forum-submit" type="submit">{{lookup ../users @index}}</button> <div class="postNum">#{{@index}}</div>
+                                    </form>
+                                </div>
+                                <div class="panel-body comment-body">
+                                    <p style="margin-top:-40px; margin-bottom:-50px;">{{lookup ../comments @index}}</p>
+                                </div>
+                            </div>
+                        {{/if}}
+                    {{/each}}
+                </div>
+            {{else}}
+                <div id="article-comment-space">
+                    {{#each comments}}
+                        <div class="panel panel-primary" id="actual-article-comment">
+                            <div class="panel-heading">
+                                <form action="/user/click-profile-article" method="POST">
+                                    <input type="hidden" name="username" value="{{lookup ../users @index}}" />
+                                    <button class="forum-submit" type="submit">{{lookup ../users @index}}</button> <div class="postNum">#{{@index}}</div>
+                                </form>
+                            </div>
+                            <div class="panel-body comment-body">
+                                <p style="margin-top:-40px; margin-bottom:-50px;">{{this}}</p>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            {{/if}}
+        {{/if}}
+        <h3 style="text-align:center">You are banned and cannot comment on articles</h3>
+    {{else}}
+        {{# if login}}
+                {{#if comments}}
+                    {{#if replyToMessage}}
+                        <div id="article-comment-space">
+                            {{#each replyToMessage}}
+                                {{#if this}}
+                                    <div class="panel panel-primary" id="actual-article-comment">
+                                        <div class="panel-heading">
+                                            <form action="/user/click-profile-article" method="POST">
+                                                <input type="hidden" name="username" value="{{lookup ../users @index}}" />
+                                                <button class="forum-submit" type="submit">{{lookup ../users @index}}</button> <div class="postNum">#{{@index}}</div>
+                                            </form>
+                                            {{id}}
+                                        </div>
+                                        <div class="panel-body comment-body">
+                                            <div class="reply" style="padding-left:10px;">
+                                                <p style="font-weight:bold; margin-top:-40px; margin-bottom:-30px;">Originally Posted By: {{this}}</p>
+                                                <p style="margin-bottom:-40px;">{{lookup ../replies @index}}</p>
+                                            </div>
+                                            <p style="margin-bottom:-70px;">{{lookup ../comments @index}}</p>
+
+                                            <form action="/enhancement/reply-to-comment" method="POST" class="reply-form" style="float:right; margin-bottom:-30px;">
+                                                <input type="hidden" name="commentContent" value="{{lookup ../ comments @index}}">
+                                                <input type="hidden" name="commentUser" value="{{lookup ../users @index}}">
+                                                <input type="hidden" name="articleId" value="{{lookup ../loopID @index}}">
+                                                <button>Reply</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                {{else}}
+                                    <div class="panel panel-primary" id="actual-article-comment">
+                                        <div class="panel-heading">
+                                            <form action="/user/click-profile-article" method="POST">
+                                                <input type="hidden" name="username" value="{{lookup ../users @index}}" />
+                                                <button class="forum-submit" type="submit">{{lookup ../users @index}}</button> <div class="postNum">#{{@index}}</div>
+                                            </form>
+                                            {{id}}
+                                        </div>
+                                        <div class="panel-body comment-body">
+                                            <p style="margin-top:-40px; margin-bottom:-50px;">{{lookup ../comments @index}}</p>
+                                            <form action="/enhancement/reply-to-comment" method="POST" class="reply-form" style="float:right; margin-bottom:-30px;">
+                                                <input type="hidden" name="commentContent" value="{{lookup ../ comments @index}}">
+                                                <input type="hidden" name="commentUser" value="{{lookup ../users @index}}">
+                                                <input type="hidden" name="commentDelete" value="{{this}}" />
+                                                <input type="hidden" name="articleId" value="{{lookup ../loopID @index}}">
+                                                <button>Reply</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                {{/if}}
+                            {{/each}}
+                        </div>
+                    {{else}}
+                        <div id="article-comment-space">
+                            {{#each comments}}
+                                <div class="panel panel-primary" id="actual-article-comment">
+                                    <div class="panel-heading">
+                                        <form action="/user/click-profile-article" method="POST">
+                                            <input type="hidden" name="username" value="{{lookup ../users @index}}" />
+                                            <button class="forum-submit" type="submit">{{lookup ../users @index}}</button> <div class="postNum">#{{@index}}</div>
+                                        </form>
+                                        {{id}}
+                                    </div>
+                                    <div class="panel-body comment-body">
+                                        <div class="reply">
+                                            <p style="font-weight:bold; margin-top:-40px; margin-bottom:-30px;">{{lookup ../replyToMessage @index}}</p>
+                                            <p style="margin-bottom:-40px;">{{lookup ../replies @index}}</p>
+                                        </div>
+
+                                        {{this}}
+                                        <form action="/enhancement/reply-to-comment" method="POST" class="reply-form">
+                                            <input type="hidden" name="commentContent" value="{{this}}">
+                                            <input type="hidden" name="commentUser" value="{{lookup ../users @index}}">
+                                            <input type="hidden" name="articleId" value="{{lookup ../loopID @index}}">
+                                            <button>Reply</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            {{/each}}
+                        </div>
+                    {{/if}}
+                {{/if}}
+            {{#if article.allowComments}}
+                {{#if goingToReply}}
+                    {{#if comments}}<i>You must write something to comment</i>{{/if}}
+                    <div style="margin-left:250px;">Replying to: {{replyTo}} comment - <div style="font-style:italic;">{{commentReplyTo}}</div></div>
+                    <form action="/enhancement/make-article-comment" method="POST" id="comment-on-article">
+                        <input type="hidden" name="userReplyTo" value="{{replyTo}}" />
+                        <input type="hidden" name="commentReplyTo" value="{{commentReplyTo}}">
+                        <input type="hidden" name="articleid" value="{{id}}" />
+                        <input type="hidden" name="articleTitle" value="{{title}}">
+                        <textarea id="commentArea" name="commentArea" cols="30" rows="10"></textarea> <br />
+                        <button class="submitButton" id="submit">Post comment</button>
+                    </form>
+                {{else}}
+                    {{#if comments}}<i>You must write something to comment</i>{{/if}}
+                    <form action="/enhancement/make-article-comment" method="POST" id="comment-on-article">
+                        <input type="hidden" name="userReplyTo" value="" />
+                        <input type="hidden" name="commentReplyTo" value="">
+                        <input type="hidden" name="articleid" value="{{id}}" />
+                        <input type="hidden" name="articleTitle" value="{{title}}">
+                        <textarea id="commentArea" name="commentArea" cols="30" rows="10"></textarea> <br />
+                        <button class="submitButton" id="submit">Post comment</button>
+                    </form>
+                {{/if}}
+            {{else}}
+                Comments are closed for this article
+            {{/if}}
+
+        {{else}}
+            {{#if comments}}
+                {{#if replyToMessage}}
+                    <div id="article-comment-space">
+                        {{#each replyToMessage}}
+                            {{#if this}}
+                                <div class="panel panel-primary" id="actual-article-comment">
+                                    <div class="panel-heading">
+                                        <form action="/user/click-profile-article" method="POST">
+                                            <input type="hidden" name="username" value="{{lookup ../users @index}}" />
+                                            <button class="forum-submit" type="submit">{{lookup ../users @index}}</button> <div class="postNum">#{{@index}}</div>
+                                        </form>
+                                    </div>
+                                    <div class="panel-body comment-body">
+                                        <div class="reply" style="padding-left:10px;">
+                                            <p style="font-weight:bold; margin-top:-40px; margin-bottom:-30px;">Originally Posted By: {{this}}</p>
+                                            <p style="margin-bottom:-40px;">{{lookup ../replies @index}}</p>
+                                        </div>
+                                        <p style="margin-bottom:-50px;">{{lookup ../comments @index}}</p>
+                                    </div>
+                                </div>
+                            {{else}}
+                                <div class="panel panel-primary" id="actual-article-comment">
+                                    <div class="panel-heading">
+                                        <form action="/user/click-profile-article" method="POST">
+                                            <input type="hidden" name="username" value="{{lookup ../users @index}}" />
+                                            <button class="forum-submit" type="submit">{{lookup ../users @index}}</button> <div class="postNum">#{{@index}}</div>
+                                        </form>
+                                    </div>
+                                    <div class="panel-body comment-body">
+                                        <p style="margin-top:-40px; margin-bottom:-50px;">{{lookup ../comments @index}}</p>
+                                    </div>
+                                </div>
+                            {{/if}}
+                        {{/each}}
+                    </div>
+                {{else}}
+                    <div id="article-comment-space">
+                        {{#each comments}}
+                            <div class="panel panel-primary" id="actual-article-comment">
+                                <div class="panel-heading">
+                                    <form action="/user/click-profile-article" method="POST">
+                                        <input type="hidden" name="username" value="{{lookup ../users @index}}" />
+                                        <button class="forum-submit" type="submit">{{lookup ../users @index}}</button> <div class="postNum">#{{@index}}</div>
+                                    </form>
+                                </div>
+                                <div class="panel-body comment-body">
+                                    <p style="margin-top:-40px; margin-bottom:-50px;">{{this}}</p>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                {{/if}}
+            {{/if}}
+        {{/if}}
+    {{/if}}
+    <div id="bottom"></div>
+
+</div>

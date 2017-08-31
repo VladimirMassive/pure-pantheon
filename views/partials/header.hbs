@@ -1,0 +1,63 @@
+<nav class="navbar navbar-inverse" style="border-bottom:5px solid red;">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Pure Pantheon</a>
+
+            <a href="https://www.facebook.com/purepantheon/" style="float:right; margin-right:10px;">
+                <i class="fa fa-facebook-square fa-3x" style="color:white" aria-hidden="true"></i>
+            </a>
+            <a href="https://twitter.com/PurePantheon" style="float:right; margin-right:10px;">
+                <i class="fa fa-twitter-square fa-3x" style="color:white" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.instagram.com/purepantheon/" style="float:right; margin-right:10px;">
+                <i class="fa fa-instagram fa-3x" style="color:white" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                {{!<li><a href="#">Link</a></li>}}
+
+                <li>
+                    <a href="/main/shopping-cart">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart
+                        {{#if session.cart.totalQty}}
+                            <span class="badge">{{session.cart.totalQty}}</span>
+                        {{else}}
+                        {{/if}}
+                    </a>
+
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/main/supplement">Supplements</a></li>
+                        <li><a href="/enhancement/enhancement">Articles</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/main/forum">Forums</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> User Account <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        {{# if login}}
+                            <li>
+                                <form action="/user/my-profile" method="POST">
+                                    <button style="background:none; border:none;" type="submit">My Profile</button>
+                                </form>
+                            </li>
+                            <li><a href="/logout">Log Out</a></li>
+                        {{else}}
+                            <li><a href="/user/sign-up">Sign Up</a></li>
+                            <li><a href="/user/sign-in">Sign In</a></li>
+                        {{/if}}
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+
+    </div><!-- /.container-fluid -->
+</nav>

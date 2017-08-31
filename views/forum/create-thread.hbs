@@ -1,0 +1,21 @@
+<div class="create-thread-body">
+    {{#if threadMsg}}
+        <i>{{threadMsg}}</i>
+    {{/if}}
+    {{#if noMsg}}
+        <i>{{noMsg}}</i>
+    {{/if}}
+    <form action="/forum/create-thread" method="POST">
+        <div class="thread-title">
+            <h2>Thread Title</h2>
+            <input type="text" name="threadTitle" class="thread-title-input" />
+        </div>
+
+        <div class="thread-content">
+            <h2>Thread Content</h2>
+            <textarea rows="20" class="thread-content-input" name="threadContent"></textarea>
+        </div>
+
+        <button>Create New Thread</button>
+    </form>
+</div>

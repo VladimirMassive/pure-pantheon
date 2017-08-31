@@ -1,0 +1,20 @@
+{{#if users}}
+    {{#each users}}
+        {{#if this.email}}
+            {{this.email}},
+        {{else}}
+        {{/if}}
+    {{/each}}
+{{else}}
+    There are no users
+{{/if}}
+
+<br />
+
+{{#if customers}}
+    {{#each customers}}
+        {{this.email}}
+    {{/each}}
+{{else}}
+    There are no customers
+{{/if}}

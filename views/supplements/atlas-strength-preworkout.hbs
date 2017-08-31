@@ -1,0 +1,110 @@
+<div id="atlas-outer">
+    <div class="supplement-left">
+        <div class="bottle-picture">
+            <img class="picture" src="/images/bottle-front.jpg" />
+        </div>
+        <div class="supplement-description">
+            <div class="what-it-is">
+                Pure Pantheon Pre-Workout: Atlas Strength
+            </div>
+            <div class="what-it-does">
+                <ul>
+                    <li>BIG workouts DEMAND: HIGH energy, MAXIMUM focus, and BRUTAL intensity which is why we’ve provided the ULTIMATE pre-workout to crush complacency and give you the boost you need to perform at peak levels each and EVERY day.</li>
+                    <li>INSPIRED by the Greek legends of old, Pure Pantheon’s Atlas Strength Pre-Workout replicates the ancient and powerful ambrosia of the immortals, bottled straight from the peaks of Mt. Olympus, delivering DIVINE workout enhancement fit for the gods themselves.</li>
+                    <li>MYTHICAL flavor packed inside every scoop: Gone are the days of choking back nasty, unappealing, boring, and uninspired mystery blends. Our Atlas Strength Pre-Workout imparts maximum energy complete with a refreshing tropical fruit punch flavor.</li>
+                    <li>ONLY the best: Pure Pantheon’s Atlas Strength Pre-Workout offers only PROVEN, scientifically researched, ingredients WITHOUT any of the filler, giving you just what you need to ELEVATE your performance to the next level.</li>
+                    <li>FAST acting formula delivers the ENERGY and DRIVE needed to CRUSH and CONQUER plateaus.
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="supplement-right">
+            {{#if outMessage}}
+                <div id="success" style="border:2px solid black;" class="alert alert-danger">
+                    {{outMessage}}
+                </div>
+            {{else}}
+                {{#if maxMessage}}
+                    <div id="success" style="border:2px solid black;" class="alert alert-danger">
+                        {{maxMessage}}
+                    </div>
+                {{else}}
+                    {{#if addMessage}}
+                        <div id="success" style="">
+                            <h3><strong>{{addMessage}}</strong></h3>
+                        </div>
+                    {{else}}
+                        {{#if subMessage}}
+                            <div id="success" style="">
+                                <h3><strong>{{subMessage}}</strong></h3>
+                            </div>
+                        {{else}}
+                        {{/if}}
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+        <div class="supplement-info">
+            {{#if qty}}
+                <div id="cart" style="">
+                    <h3><strong>Your Cart:</strong></h3>
+                    <img src="{{picture}}" class="shopping-cart-picture" style="height:100px;width:auto;border:2px solid black;"/> X {{qty}}
+                    <strong>{{description}} - {{title}}</strong>
+                    <form action="/quick-delete-from-cart/{{id}}" method="POST" style="display:inline-block">
+                        <button>-</button>
+                    </form>
+                    <form action="/quick-add-to-cart/{{id}}" method="POST" style="display:inline-block;">
+                        <button>+</button>
+                    </form>
+                </div>
+
+                <div class="purchase-buttons" style="margin-bottom:20px; margin-top:10px;">
+                    <a href="/shopping-cart/checkout" type="button" class="btn btn-success" style="width:100%;">
+                        Checkout
+                    </a>
+                </div>
+            {{/if}}
+            <div class="supp-info-pic-div">
+                <a href="/images/atlas-strength-supp-info.jpg">
+                    <img class="supp-info-pic" src="/images/atlas-strength-supp-info.jpg">
+                </a>
+            </div>
+            <div class="info">
+                <div class="info-head">
+                    Formulated with taste and performance in mind, Pure Pantheon Atlas-Strength Pre-Workout takes the concept of the legendary "nectar of the gods" ambrosia from Ancient Greek mythology and brings it to life
+                    <ul style="margin-top:10px; margin-bottom:10px;">
+                        <li>B Vitamins for rapid-fire energy production</li>
+                        <li>Beta-Alanine for Titan-like endurance</li>
+                        <li>Taurine for Laser-like focus</li>
+                        <li>Pantothenic Acid for incredible ATP production</li>
+                        <li>Caffeine for hard-hitting energy boosts</li>
+                        <li>Creatine for maximum size, strength, and recovery</li>
+                    </ul>
+                    It's time to take your workouts to the next level. It's time to train like an immortal.
+                </div>
+            </div>
+        </div>
+        <div class="supplement-pictures-and-purchase">
+            <div class="purchase-buttons">
+                {{!--
+                <a href="#" class="buy-on-amazon">
+                    <i class="fa fa-amazon" aria-hidden="true"></i>
+                    Buy on Amazon
+                </a>
+                --}}
+                <a href="/add-to-cart/{{id}}" class="buy-on-site">
+                    <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+                    Add to Shopping Cart
+                </a>
+            </div>
+            <div class="availability">
+                {{#if available}}
+                    Availability: In Stock!
+                {{else}}
+                    Availability: OUT - Stock coming soon!
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

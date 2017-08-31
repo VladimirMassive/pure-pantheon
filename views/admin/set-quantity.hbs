@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        {{#each products}}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>{{this.title}}</strong> | Remaining Quantity: {{this.stockQuantity}}
+                </div>
+                <div class="panel-body">
+                    <form action="/admin/add-stock" method="POST" style="display:inline;">
+                        Add Units to Stock:
+                        <input type="text" name="numToAdd" />
+                        <input type="hidden" name="productID" value="{{this._id}}" />
+                        <button class="btn btn-success">Add to System</button>
+                    </form>
+                    <form action="/admin/take-stock" method="POST" style="display:inline;">
+                        Take Units from Stock:
+                        <input type="text" name="numToTake" />
+                        <input type="hidden" name="productID" value="{{this._id}}" />
+                        <button class="btn btn-primary">Take from System</button>
+                    </form>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>

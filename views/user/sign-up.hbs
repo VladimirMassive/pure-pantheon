@@ -1,0 +1,41 @@
+<html>
+
+<body>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4" style="border-right:1px solid gray; border-left:1px solid gray;">
+            <h1>Sign Up</h1>
+            {{#if hasErrors}}
+                <div class="alert alert-danger">
+                    {{# each messages}}
+                        <p>
+                            {{this}}
+                        </p>
+                    {{/each}}
+                </div>
+            {{/if}}
+            <form action="/user/sign-up" method="post">
+                <div class="form-group">
+                    <label for="email">Username:</label>
+                    <input type="text" name="username" id="user" class="form-control"> <br/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password: (At least 7 characters)</label>
+                    <input type="password" name="password" id="password" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Email: (optional)</label>
+                    <input type="text" class="form-control" name="email">
+                </div>
+
+
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+
+            <button type="submit" style="width:100%;" class="btn btn-primary">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

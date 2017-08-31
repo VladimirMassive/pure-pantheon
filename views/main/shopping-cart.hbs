@@ -1,0 +1,102 @@
+{{#if products}}
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <ul class="list-group">
+                {{#each products}}
+                    <li class="list-group-item">
+                        <span class="badge">{{this.price}}</span>
+                        <strong>{{this.item.title}} | </strong>
+                        <strong><i>{{this.item.description}}</i> | </strong>
+                        <strong style="margin-right:7px;"> X {{this.qty}}</strong>
+                        <div class="btn-group">
+                            <form action="/quick-add-to-cart/{{lookup ../productIDs @index}}" method="POST" style="display:inline-block">
+                                <button class="shopping-qty"><i class="fa fa-caret-up" aria-hidden="true"></i></button>
+                            </form>
+                            <form action="/quick-delete-from-cart/{{lookup ../productIDs @index}}" method="POST" style="display:inline-block">
+                                <button class="shopping-qty"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                            </form>
+                        </div>
+                        <form action="/remove/{{lookup ../productIDs @index}}" method="GET" style="display:inline-block">
+                            <button class="btn btn-primary" style="padding:0 5px 0 5px;">Remove All</button>
+                        </form>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+
+    {{#if checkout}}
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+                <strong>Priority Shipping - $7.00</strong>
+                <div>
+                    <p>Thank you for shopping with us!</p>
+                    <p>Please, open the package delivered under your order the moment you receive it. If any damage is revealed, make claims against mail service</p>
+                    <p>Any Questions? Email our customer service at <i>customerservice@purepantheon.com</i></p>
+                </div>
+
+                <hr>
+
+                <form action="/charge/promo-code" method="POST">
+                    <h4><strong>Promo Code (If Applicable)</strong></h4>
+                    <i style="font-size:12px;"><strong>Note:</strong> Promo codes only apply to the price of the products and do not apply to the shipping charge. If you add another product to your cart after entering a code, or change the quantity of any of the products in your cart, you will need to enter the code again upon checkout</i>
+                    <br>
+                    <input type="text" name="promoCode" />
+                    <button>Enter</button>
+                </form>
+
+                {{#if noCode}}
+                    <strong>{{noCode}}</strong>
+                {{/if}}
+                {{#if noMore}}
+                    <strong>{{noMore}}</strong>
+                {{/if}}
+                {{#if noEnter}}
+                    <strong>{{noEnter}}</strong>
+                {{/if}}
+                {{#if notUS}}
+                    <div class="alert alert-danger">{{notUS}}</div>
+                {{/if}}
+
+                <h4><strong>Total Price: ${{shippingPrice}}</strong> {{#if usedCode}}<i>This price already has the promo code applied</i>{{/if}}</h4>
+
+                <form action="/main/charge" method="POST">
+                    <script
+                            src="https://checkout.stripe.com/checkout.js"
+                            class="stripe-button"
+                            data-key="pk_test_I5JShZxTzHwbKUOcIx66R5i3"
+                            data-amount="{{chargePrice}}"
+                            data-locale="auto"
+                            data-currency="usd"
+                            data-title="PURE PANTHEON - Atlas Strength Pre-Workout"
+                            data-description="It's time to take your workouts to the next level. It's time to train like an immortal"
+                            data-shippingAddress="true"
+                    >
+                    </script>
+                    <input type="hidden" value="{{chargePrice}}" name="chargeAmount">
+                    <input type="hidden" value="{{productID}}" name="productID" />
+                </form>
+            </div>
+        </div>
+    {{else}}
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+                <strong>Total: ${{totalPrice}}</strong> <br>
+                <form action="/checkout" method="POST">
+                    <input type="hidden" name="productID" value="{{productID}}" />
+                    <button class="btn btn-success">Checkout</button>
+                </form>
+            </div>
+        </div>
+        <div id="charge-error" class="alert alert-danger {{#if noError}}hidden{{/if}}">
+            {{errMsg}}
+        </div>
+    {{/if}}
+{{else}}
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <h2>No Items in Cart</h2>
+        </div>
+    </div>
+{{/if}}
+
