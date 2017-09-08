@@ -56,6 +56,18 @@ html,body {
     font-weight:bold;
 }
 
+.mobile-checks-and-cart {
+    display:none;
+}
+
+.add-cart-right {
+    display:none;
+}
+
+.facts-right {
+    display:none;
+}
+
 .supplement-right {
     width:55%;
     height:100%;
@@ -108,22 +120,6 @@ html,body {
     align-items: center;
 }
 
-.buy-on-amazon {
-    height:100%;
-    font-size:30px;
-    padding:5px;
-    border-radius:8px;
-    border:3px solid black;
-    color:white;
-    background-color:limegreen;
-}
-
-.buy-on-amazon:hover {
-    text-decoration:none;
-    color:white;
-    opacity: .8;
-}
-
 .buy-on-site {
     margin-top:20px;
     height:100%;
@@ -146,4 +142,49 @@ html,body {
     font-size:30px;
     font-family:"Segoe UI Symbol", Gabriola, sans-serif;
     font-weight:bold;
+}
+
+@media only screen and (max-width:900px) {
+    #atlas-outer {
+        display:flex;
+        margin-bottom:7px;
+    }
+    .supplement-right {
+        display:none;
+    }
+    .supplement-left {
+        width:90%;
+        margin:0 auto;
+        clear:both;
+    }
+    .what-it-is {
+        text-align: left;
+        margin:0 auto;
+    }
+    .supp-promote-list {
+        list-style: none;
+        padding:0;
+    }
+    .supp-promote-list-link {
+        padding-bottom: 7px;
+    }
+    .facts-right {
+        width:400px;
+        height:auto;
+        margin:0 auto;
+        display: block;
+        border:4px solid black;
+    }
+    .supp-info-right-pic {
+        height:100%;
+        width:100%;
+    }
+    .add-cart-right {
+        display:block;
+    }
+    .mobile-checks-and-cart {
+        display:block;
+        border-bottom:1px solid black;
+        font-weight:bold;
+    }
 }

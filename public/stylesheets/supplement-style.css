@@ -168,3 +168,119 @@
 #supplement-bottom-ad {
     height:250px;
 }
+
+@media only screen and (max-width:1400px) {
+    .supplement-logo {
+        display:none;
+    }
+    #pure-pantheon-mission {
+        width:100%;
+    }
+    .supplement-right-top {
+        width:100%;
+        padding:5px 100px 5px;
+        border-top:2px solid black;
+        border-bottom:2px solid black;
+    }
+}
+
+@media only screen and (max-width:1100px) {
+    #supplement-page-button-group {
+        display:none;
+    }
+    #supplement-ad-space {
+        width:400px;
+        padding-left:40px;
+    }
+    #supplement-mid-div {
+        width:calc(100% - 400px);
+    }
+}
+
+@media only screen and (max-width:900px) {
+    #supplement-ad-space, #pure-pantheon-mission, .pure-slogan {
+        display:none;
+    }
+    #supplement-mid-div {
+        width:100%;
+        border:none;
+    }
+    .supplement-right-top {
+        border-bottom:2px solid black;
+    }
+    .bottom-information-div {
+        height:auto;
+    }
+    #top-half-supplement {
+        height:auto;
+    }
+    #bottom-half-supplement {
+        margin-top:-28px;
+        border:none;
+    }
+}
+
+@media only screen and (max-width:600px) {
+    .bottom-information-div {
+        height:250px;
+        display: table;
+    }
+    .logo-part-footer {
+        width:100%;
+        height:100px;
+    }
+    .footer-logo-div {
+        height:100px;
+        width:150px;
+        margin:0 auto;
+    }
+    .mobile-support-footer {
+        display: block;
+        text-align: center;
+        font-family: Arial Narrow,Arial,sans-serif;
+        font-size: 16px;
+        border-bottom: .5px solid white;
+        padding-bottom:10px;
+    }
+    .support-part-footer {
+        display:none;
+    }
+    .support-list-link {
+        font-style: normal;
+        padding-right:15px;
+    }
+    .mobile-terms {
+        display:block;
+        text-align:center;
+    }
+    .mobile-link {
+        color:white;
+        opacity:.5;
+        font-size:10px;
+    }
+    .mobile-link:hover {
+        color:red;
+        text-decoration:none;
+        opacity:.6;
+    }
+    .footer-logo {
+        width:100%;
+        height:auto;
+    }
+    .follow-title{
+        display:none;
+    }
+    .follow-part-footer{
+        width:100%;
+    }
+    #more-coming {
+        width:auto;
+        margin:0 auto;
+    }
+    #more-coming-text {
+        font-size:20px;
+        font-weight:bold;
+        text-align:center;
+    }
+}
+

@@ -110,3 +110,26 @@ img.author-pic {
     width:100%;
     height:600px;
 }
+
+@media only screen and (max-width:900px) {
+    #left-side-article {
+        display:none;
+    }
+    #ad-part-article {
+        display:none;
+    }
+    #content-part-article {
+        width:90%;
+    }
+    #article-comment-space {
+        width:90%;
+        min-width: 400px;
+        height:auto;
+        margin:0 auto;
+    }
+    .ad-div-728-90 {
+        width:320px;
+        height:100px;
+        margin:50px auto 50px auto;
+    }
+}

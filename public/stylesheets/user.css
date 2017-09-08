@@ -14,6 +14,10 @@
     height:auto;
 }
 
+.mobile-user-stuff {
+    display:none;
+}
+
 #profile-page-second {
     float:left;
     width:calc(100% - 600px);
@@ -58,4 +62,32 @@
     border-bottom:none;
     color:blue;
     font-style:italic;
+}
+
+@media only screen and (max-width: 900px) {
+    #pic-name {
+        display:none;
+    }
+    #comment-buttons {
+        float: none;
+        padding-left:5px;
+    }
+    #profile-page-second {
+        width:95%;
+    }
+    .mobile-user-stuff {
+        display:block;
+        width:300px;
+        margin:0 auto;
+    }
+    .user-message {
+        text-align:center;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #profile-page-second {
+        width:100%;
+        padding:5px;
+    }
 }

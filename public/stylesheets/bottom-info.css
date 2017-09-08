@@ -24,8 +24,8 @@ html, body {
 }
 
 .logo-part-footer {
-    display:flex;
     width:40%;
+    display:flex;
 }
 
 .footer-logo-div {
@@ -50,6 +50,10 @@ html, body {
     font-weight:bold;
 }
 
+.mobile-support-footer{
+    display:none;
+}
+
 .support-part-footer {
     width:30%;
     padding-left:75px;
@@ -60,11 +64,18 @@ html, body {
 
 .support-list {
     list-style-type: none;
+    color:red;
     padding:0;
 }
 
-.support-list-links {
+.support-list-link, .support-list-link:hover {
     color:white;
+    font-style:italic;
+    text-decoration:none;
+}
+
+.mobile-terms{
+    display:none;
 }
 
 .follow-part-footer {
@@ -81,6 +92,7 @@ html, body {
     display:flex;
     align-items:center;
     justify-content: center;
+    color:red;
 }
 
 /* Index Bottom Information */
@@ -149,6 +161,10 @@ html, body {
     display:flex;
     align-items:center;
     justify-content: center;
+}
+
+.index-footer-links {
+    color:black;
 }
 
 .index-links {}
