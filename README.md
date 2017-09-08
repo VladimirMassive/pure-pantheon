@@ -1,1 +1,1 @@
-# pure-patheon
+# pure-pantheon
