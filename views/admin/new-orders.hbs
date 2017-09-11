@@ -4,7 +4,7 @@
             <h3>Orders that need to be Filled: <strong>{{numOrders}}</strong></h3>
             {{# each newOrders}}
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i>{{this.name}}</i> - {{this.email}} - <i>{{this.datePlaced}}</i> --- <strong>{{this.address}}</strong></div>
+                    <div class="panel-heading"><i>{{this.name}}</i> - {{this.email}} - <i>{{this.datePlaced}}</i> --- <strong>{{this.address}}</strong> - {{this._id}}</div>
                     <div class=panel-body">
                         <ul class="list-group">
                             {{# each this.items}}

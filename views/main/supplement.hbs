@@ -27,7 +27,7 @@
                 </div>
             {{/if}}
             <div id="success" style="" class="supplement-right-top">
-                <strong>Your Cart:</strong>
+                <strong style="font-size:20px;">Your Cart:</strong>
                 {{#each products}}
                     <div>
                         {{this.title}} - {{this.description}} X <strong>{{lookup ../qty @index}}</strong>
@@ -44,7 +44,7 @@
                 </a>
             </div>
         {{else}}
-            <a href="/"><img class="supplement-right-top" src="/images/Logo.jpg"></a>
+            <a href="/"><img class="supplement-right-top supplement-logo" src="/images/Logo.jpg"></a>
         {{/if}}
     </div>
 

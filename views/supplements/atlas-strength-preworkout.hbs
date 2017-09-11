@@ -1,22 +1,84 @@
 <div id="atlas-outer">
     <div class="supplement-left">
         <div class="bottle-picture">
-            <img class="picture" src="/images/bottle-front.jpg" />
+            <a href="/images/bottle-front.jpg">
+                <img class="picture" src="/images/bottle-front.jpg" />
+            </a>
         </div>
         <div class="supplement-description">
             <div class="what-it-is">
                 Pure Pantheon Pre-Workout: Atlas Strength
             </div>
+            <div class="mobile-checks-and-cart">
+                {{#if available}}
+                    Availability: In Stock!
+                    {{#if maxMessage}}
+                        <div id="success" style="border:2px solid black;" class="alert alert-danger">
+                            {{maxMessage}}
+                        </div>
+                    {{else}}
+                        {{#if addMessage}}
+                            <div id="success" style="">
+                                <h3><strong>{{addMessage}}</strong></h3>
+                            </div>
+                        {{else}}
+                            {{#if subMessage}}
+                                <div id="success" style="">
+                                    <h3><strong>{{subMessage}}</strong></h3>
+                                </div>
+                            {{else}}
+                            {{/if}}
+                        {{/if}}
+                    {{/if}}
+                {{else}}
+                    Availability: OUT - Stock coming soon!
+                    {{#if outMessage}}
+                        <div id="success" style="border:2px solid black;" class="alert alert-danger">
+                            {{outMessage}}
+                        </div>
+                    {{/if}}
+                {{/if}}
+                {{#if qty}}
+                    <div id="cart" style="">
+                        <h3><strong>Your Cart:</strong></h3>
+                        <img src="{{picture}}" class="shopping-cart-picture" style="height:100px;width:auto;border:2px solid black;"/> X {{qty}}
+                        <strong>{{description}} - {{title}}</strong>
+                        <form action="/quick-delete-from-cart/{{id}}" method="POST" style="display:inline-block">
+                            <button>-</button>
+                        </form>
+                        <form action="/quick-add-to-cart/{{id}}" method="POST" style="display:inline-block;">
+                            <button>+</button>
+                        </form>
+                    </div>
+
+                    <div class="purchase-buttons" style="margin-bottom:20px; margin-top:10px;">
+                        <a href="/shopping-cart/checkout" type="button" class="btn btn-success" style="width:100%;">
+                            Checkout
+                        </a>
+                    </div>
+                {{/if}}
+            </div>
+
             <div class="what-it-does">
-                <ul>
-                    <li>BIG workouts DEMAND: HIGH energy, MAXIMUM focus, and BRUTAL intensity which is why we’ve provided the ULTIMATE pre-workout to crush complacency and give you the boost you need to perform at peak levels each and EVERY day.</li>
-                    <li>INSPIRED by the Greek legends of old, Pure Pantheon’s Atlas Strength Pre-Workout replicates the ancient and powerful ambrosia of the immortals, bottled straight from the peaks of Mt. Olympus, delivering DIVINE workout enhancement fit for the gods themselves.</li>
-                    <li>MYTHICAL flavor packed inside every scoop: Gone are the days of choking back nasty, unappealing, boring, and uninspired mystery blends. Our Atlas Strength Pre-Workout imparts maximum energy complete with a refreshing tropical fruit punch flavor.</li>
-                    <li>ONLY the best: Pure Pantheon’s Atlas Strength Pre-Workout offers only PROVEN, scientifically researched, ingredients WITHOUT any of the filler, giving you just what you need to ELEVATE your performance to the next level.</li>
-                    <li>FAST acting formula delivers the ENERGY and DRIVE needed to CRUSH and CONQUER plateaus.
+                <ul class="supp-promote-list">
+                    <li class="supp-promote-list-link">BIG workouts DEMAND: HIGH energy, MAXIMUM focus, and BRUTAL intensity which is why we’ve provided the ULTIMATE pre-workout to crush complacency and give you the boost you need to perform at peak levels each and EVERY day.</li>
+                    <li class="supp-promote-list-link">INSPIRED by the Greek legends of old, Pure Pantheon’s Atlas Strength Pre-Workout replicates the ancient and powerful ambrosia of the immortals, bottled straight from the peaks of Mt. Olympus, delivering DIVINE workout enhancement fit for the gods themselves.</li>
+                    <li class="supp-promote-list-link">MYTHICAL flavor packed inside every scoop: Gone are the days of choking back nasty, unappealing, boring, and uninspired mystery blends. Our Atlas Strength Pre-Workout imparts maximum energy complete with a refreshing tropical fruit punch flavor.</li>
+                    <li class="supp-promote-list-link">ONLY the best: Pure Pantheon’s Atlas Strength Pre-Workout offers only PROVEN, scientifically researched, ingredients WITHOUT any of the filler, giving you just what you need to ELEVATE your performance to the next level.</li>
+                    <li class="supp-promote-list-link">FAST acting formula delivers the ENERGY and DRIVE needed to CRUSH and CONQUER plateaus.
 
                 </ul>
             </div>
+        </div>
+        <div class="add-cart-right" style="margin-bottom:20px; margin-top:10px;">
+            <a href="/add-to-cart/{{id}}" type="button" class="btn btn-success" style="width:100%;">
+                Add To Cart
+            </a>
+        </div>
+        <div class="facts-right">
+            <a href="/images/atlas-strength-supp-info.jpg">
+                <img class="supp-info-right-pic" src="/images/atlas-strength-supp-info.jpg">
+            </a>
         </div>
     </div>
 
