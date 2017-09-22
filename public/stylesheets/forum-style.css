@@ -206,7 +206,7 @@
     display:none;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1000px) {
     .get-threads-body {
         min-height:100vh;
         height:auto;

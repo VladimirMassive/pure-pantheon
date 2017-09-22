@@ -254,15 +254,17 @@
     }
 }
 
-@media only screen and (max-width:750px) {
+@media only screen and (max-width:1000px) {
     #front-logo {
         display:none;
     }
     #article-div, #supplements-div {
+        width:90%;
         margin:0 auto;
     }
     .mobile-index-ad {
         display:block;
+        margin:0 auto;
     }
 }
 
