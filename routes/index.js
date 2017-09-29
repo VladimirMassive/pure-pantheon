@@ -115,6 +115,7 @@ router.get ("/logout", function (req, res, next) {
 });
 
 // forum stuff
+/*
 var specificUserDescription;
 var pageName;
 var id;
@@ -456,6 +457,7 @@ router.post ("/jump-to-page", function (req ,res, next) {
     }
   })
 });
+*/
 
 // User stuff
 router.get ("/user/banned", isBanned, function(req, res, next) {
