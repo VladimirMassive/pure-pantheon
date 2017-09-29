@@ -464,6 +464,7 @@ router.get ("/user/banned", isBanned, function(req, res, next) {
   res.render ("user/banned");
 });
 
+/*
 router.get ("/user/profile/:username", function (req, res, next) {
   User.findOne ({"username": req.params.username}, function (err, docs) {
     if (err) {
@@ -545,6 +546,7 @@ router.get ("/user/profile/:username/show-all-comments", function (req, res, nex
         }
     });
 });
+*/
 
 router.get ("/user/profile/article-comments/:username", function (req, res, next) {
   User.findOne ({"username": req.params.username}, function (err, docs) {
